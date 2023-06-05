@@ -1,0 +1,12 @@
+.hash-game
+  h1 Hash game
+  .display
+    p Player X: {{playerXScore}}
+    p Player O: {{playerOScore}}
+    button((click)="restartScore()") Restart Score
+    button((click)="restartHash()") Restart Game
+  .row(*ngFor="let r of hash; let row = index")
+    button.column(
+      *ngFor="let c of hash; let column = index",
+      [disabled]="hash[row][column] !== 0",
+      (click)="playerPlays(row, column)") {{displayFormatter(hash[row][column])}}
